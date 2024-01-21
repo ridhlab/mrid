@@ -1,4 +1,4 @@
-import { SiCodewars, SiQuora } from "react-icons/si";
+import { SiCodewars, SiGmail, SiQuora } from "react-icons/si";
 import { Profile } from "./profile";
 import {
     FaGithub,
@@ -9,6 +9,11 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 
 export const socialLinks = [
+    {
+        title: "Email",
+        url: Profile.socialLinks.gmail,
+        icon: SiGmail,
+    },
     {
         title: "Github",
         url: Profile.socialLinks.github,

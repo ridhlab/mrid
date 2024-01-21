@@ -5,6 +5,7 @@ export const Profile = {
     shortBio:
         "Over 3+ years experience. Have passionate in Software Development and programming. Love to explore new things related on Technology, Software Engineering, Artificial Intelligence and many more then connect them to discover useful insights.",
     socialLinks: {
+        gmail: "mailto:mohridwan1707@gmail.com",
         github: "https://github.com/ridhlab",
         codewars: "https://www.codewars.com/users/ridhlab",
         instagram: "https://instagram.com/m.riduwan__",
