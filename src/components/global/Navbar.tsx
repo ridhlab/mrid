@@ -9,6 +9,7 @@ import { IoMdConstruct } from "react-icons/io";
 import { Tooltip } from "react-tooltip";
 import { useMounted } from "@/hooks/useMounted";
 import { usePathname } from "next/navigation";
+import { useWindowScrollPositions } from "@/hooks/useWindowScrollPosition";
 
 const data: {
     title: string;
@@ -35,6 +36,7 @@ const data: {
 export default function Navbar() {
     const isMounted = useMounted();
     const pathname = usePathname();
+    const { scrollY } = useWindowScrollPositions();
 
     const menuItems = (
         href: string,
@@ -72,7 +74,15 @@ export default function Navbar() {
     );
 
     return (
-        <header className="py-6 border-b border-zinc-300 px-6 dark:border-zinc-700 md:px-20">
+        <header
+            className={`transition-all ease-in-out py-6 border-b border-zinc-300 px-6 dark:border-zinc-700 md:px-20 sticky ${
+                scrollY > 100
+                    ? "bg-noise top-0 z-10 bg-[#18181bc3]"
+                    : scrollY !== 0
+                    ? "-top-44"
+                    : "top-0"
+            }`}
+        >
             <div className="flex justify-between items-center max-w-6xl mx-auto">
                 <LogoNavbar />
 

@@ -20,7 +20,9 @@ export default function HeroesSection() {
                     </div>
                     <h1 className="text-4xl font-bold">{Profile.headline}</h1>
                 </div>
-                <p>{Profile.shortBio}</p>
+                <p className="dark:text-zinc-400 text-zinc-600">
+                    {Profile.shortBio}
+                </p>
                 <ul className="flex items-center flex-wrap gap-x-5 gap-y-4">
                     {socialLinks.map((val, index) => (
                         <li key={index}>
