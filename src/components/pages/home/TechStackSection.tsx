@@ -5,7 +5,7 @@ export default function TechStackSection() {
     return (
         <div className="flex flex-col gap-y-4">
             <h2 className="font-semibold text-3xl">
-                Tech stack that I have explored
+                Tech stack that I haved explore
             </h2>
             <ul className="flex items-center flex-wrap gap-x-5 gap-y-4">
                 {Profile.techStack.map((tech, index) => {
