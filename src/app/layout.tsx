@@ -22,7 +22,9 @@ export default function RootLayout({
             <body className={inter.className + " bg-noise"}>
                 <Providers>
                     <Navbar />
-                    {children}
+                    <div className="px-6 md:px-20">
+                        <div className="max-w-6xl mx-auto">{children}</div>
+                    </div>
                 </Providers>
             </body>
         </html>

@@ -72,8 +72,8 @@ export default function Navbar() {
     );
 
     return (
-        <header className="py-6 border-b border-zinc-300 px-6 dark:border-zinc-700">
-            <div className="flex justify-between items-center">
+        <header className="py-6 border-b border-zinc-300 px-6 dark:border-zinc-700 md:px-20">
+            <div className="flex justify-between items-center max-w-6xl mx-auto">
                 <LogoNavbar />
 
                 <div className="flex items-center gap-x-12">
