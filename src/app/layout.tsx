@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/global/Navbar";
 import { Providers } from "./providers";
 import "react-tooltip/dist/react-tooltip.css";
+import Footer from "@/components/global/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
                     <div className="px-6 md:px-20">
                         <div className="max-w-6xl mx-auto">{children}</div>
                     </div>
+                    <Footer />
                 </Providers>
             </body>
         </html>
