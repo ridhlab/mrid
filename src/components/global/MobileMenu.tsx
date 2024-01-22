@@ -120,6 +120,7 @@ export default function MobileMenu() {
                                 ) : (
                                     <Link
                                         href={href}
+                                        onClick={onToggleNav}
                                         className={`flex gap-x-2 items-center transition-all mb-6 ${
                                             pathname === href
                                                 ? "text-emerald-600"

@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto dark:text-zinc-400 text-zinc-600">
                 Copyright &copy;{" "}
                 <a href={Profile.socialLinks.github} target="_blank">
-                    Ridwan
+                    {Profile.fullname}
                 </a>{" "}
                 {new Date().getFullYear()} All rights Reserved
             </div>
