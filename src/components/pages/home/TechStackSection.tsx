@@ -1,5 +1,5 @@
-import { Profile } from "@/app/contents/profile";
-import { TechStackIcon } from "@/app/contents/tech-stack";
+import { Profile } from "@/contents/profile";
+import { TechStackIcon } from "@/contents/tech-stack";
 
 export default function TechStackSection() {
     return (

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import HeroesImage from "./HeroesImage";
-import { Profile } from "@/app/contents/profile";
-import { socialLinks } from "@/app/contents/social";
+import { Profile } from "@/contents/profile";
+import { socialLinks } from "@/contents/social";
 
 export default function HeroesSection() {
     return (
