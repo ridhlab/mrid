@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className + " bg-noise"}>
+            <body className={inter.className + " bg-noise dark:bg-zinc-900"}>
                 <Providers>
                     <Navbar />
                     <div className="px-6 md:px-20">
