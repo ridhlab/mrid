@@ -3,7 +3,7 @@ import { TechStackIcon } from "@/app/contents/tech-stack";
 
 export default function TechStackSection() {
     return (
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-4 -mt-64 lg:mt-0">
             <h2 className="font-semibold text-3xl">
                 Tech stack that I haved explore
             </h2>
