@@ -30,6 +30,7 @@ export const Profile = {
         TechStackEnum.NestJS,
         TechStackEnum.Python,
         TechStackEnum.Django,
+        TechStackEnum.SQL,
         TechStackEnum.Linux,
     ],
 };
