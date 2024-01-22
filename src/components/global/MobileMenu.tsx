@@ -24,8 +24,8 @@ const data: {
         icon: <HiHome />,
     },
     {
-        title: "Blog",
-        href: ROUTE.BLOG,
+        title: "Post",
+        href: ROUTE.POST,
         underConstruction: false,
         icon: <HiBookmark />,
     },

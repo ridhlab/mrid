@@ -1,0 +1,111 @@
+---
+title: Mengenal Konsep Destructuring pada JavaScript es6
+description: Konsep destructuring javascript es6.
+date: January 22, 2024
+type: Post
+---
+
+Destructuring adalah konsep javascript untuk memecah atau mengekstrak array atau objek javascript ke dalam variabel berbeda. Destructuring sendiri menurut saya adalah sebuah cara untuk membuat code kita menjadi lebih clean dan rapi.
+
+## Destructuring pada array
+
+Sebelum kita masuk ke poin pembahasan, kita perhatikan dulu contoh penulisan code tanpa destructuring dibawah ini.
+
+```javascript
+const colors = ["red", "green", "blue"];
+const firstColor = colors[0];
+const secondColor = colors[1];
+const thirdColor = colors[2];
+console.log(firstColor, secondColor, thirdColor); // red green blue
+```
+
+Sekarang kita coba menggunakan destructuring
+
+```javascript
+const colors = ["red", "green", "blue"];
+const [firstColor, secondColor, thirdColor] = colors;
+console.log(firstColor, secondColor, thirdColor); // red green blue
+```
+
+Output yang dihasilkan sama, tapi dengan destructuring code akan terlihat lebih clean dan minimalis.
+
+Kita bisa mengkombinasikannya dengan spread operator. 
+
+```javascript
+const colors = ["red", "green", "blue"];
+const [firstColor, ...otherColor] = colors;
+console.log(firstColor); // red
+console.log(otherColor); // ["green", "blue"]
+```
+
+## Destructuring pada object
+
+Seperti biasa, kita coba dulu membuat code tanpa destructuring
+
+```javascript
+const me = {
+    name: "Muhammad Ridwan",
+    age: 22,
+    hobby: ["design", "programming", "music"],
+};
+const myName = me.name;
+const myAge = me.age;
+const myHobby = me.hobby;
+console.log(myName); // Muhammad Ridwan
+console.log(myAge); // 22
+console.log(myHobby); // ["design", "programming", "music"]
+```
+
+Sekarang kita coba menggunakan destructuring
+
+```javascript
+const me = {
+    name: "Muhammad Ridwan",
+    age: 22,
+    hobby: ["design", "programming", "music"],
+};
+const { name, age, hobby } = me;
+console.log(name); // Muhammad Ridwan
+console.log(age); // 22
+console.log(hobby); // ["design", "programming", "music"]
+```
+
+Kita bisa juga menulis seperti ini jika yang dibutuhkan hanya satu variabel
+
+```javascript
+const { name } = me;
+console.log(name); // Muhammad Ridwan
+```
+
+Selain itu destructuring pada objek bisa dilakukan dengan cara mengassign suatu variabel ke nilai dari key objek tersebut. Sehingga codenya akan tampak seperti berikut.
+
+```javascript
+const me = {
+    name: "Muhammad Ridwan",
+    age: 22,
+    hobby: ["design", "programming", "music"],
+};
+const { name: myName, age: myAge, hobby: myHobby } = me;
+console.log(myName); // Muhammad Ridwan
+console.log(myAge); // 22
+console.log(myHobby); // ["design", "programming", "music"]
+```
+
+Sekarang kita coba mengkombinasikan object destructuring dengan spread operator.
+
+```javascript
+const me = {
+    name: "Muhammad Ridwan",
+    age: 22,
+    hobby: ["design", "programming", "music"],
+};
+const { name, ...otherInfo } = me;
+console.log(name); 
+// Muhammad Ridwan
+console.log(otherInfo); 
+//{age: 22, hobby: hobby: ["design", "programming", "music"]}
+```
+
+Hasil dari spread operator berupa objek yang key dan valuenya merupakan key dan value dari object me yang tersisa.
+
+Sekian tulisan saya kali ini. Semoga dapat bermanfaat untuk kalian yang lagi belajar programming. keep learn and let’s code!!!

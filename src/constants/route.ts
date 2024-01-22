@@ -1,7 +1,7 @@
 export const ROUTE = {
     HOME: "/",
-    BLOG: "/blog",
-    BLOG_DETAIL: "/blog/:slug",
+    POST: "/post",
+    POST_DETAIL: "/post/:slug",
     PROJECT: "/project",
     EXPERIENCE: "/experience",
 };

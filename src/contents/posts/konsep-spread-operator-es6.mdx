@@ -1,0 +1,84 @@
+---
+title: Memahami Konsep Spread Operator pada JavaScript es6
+description: Konsep spread operator javascript es6.
+date: January 22, 2024
+type: Post
+---
+
+Salah satu hal yang saya sukai dari JavaScript es6 adalah adanya spread operator. Operator yang memiliki simbol titik 3 (…) ini membuat para developer lebih mudah dalam memanipulasi array maupun object.
+
+Berikut ini adalah pemanfaatan spread operator pada es6.
+
+## Untuk mengcopy array atau object
+
+```javascript
+const items = ["sepatu", "baju", "sandal"];
+const itemsCopy = [...items];
+console.log(itemsCopy); // ["sepatu", "baju", "sandal"]
+```
+
+Dari kode diatas dapat dilihat bahwa kita dapat mengcopy sebuah array dengan menuliskan nama array tersebut yang mana di depannya sudah ditambahin notasi spread (…). Yang perlu diingat, notasi spread tersbut harus ditulis atau dibungkus dalam sebuah array. Jika tidak maka kode tersebut tidak akan jalan.
+
+Kita bisa juga gunakan spread operator di object.
+
+```javascript
+const person = { name: "Muhammad Ridwan", age: 22 };
+const personCopy = { ...person };
+console.log(personCopy); //{ name: "Muhammad Ridwan", age: 22 }
+```
+
+Yang perlu diperhatikan, berdasarkan contoh diatas, kita harus menulis notasi spread di dalam array atau object.
+
+## Untuk menggabungkan array
+
+Perhatikan kode berikut.
+
+```javascript
+// menggabungkan array
+const items1 = ["sepatu", "baju", "sandal"];
+const items2 = ["gunting", "kertas", "silet"];
+const mergeItems = [...items1, ...items2];
+console.log(mergeItems); // [ "sepatu", "baju", "sandal", "gunting", "kertas", "silet" ]
+```
+
+Jika spread operator digunakan untuk menggabungkan object, maka akan terjadi seperti ini.
+
+```javascript
+// menggabungkan object
+const bio = { name: "Joko", age: 22 };
+const education = { college: "Harvard University" };
+const fullBio = { ...bio, ...education };
+console.log(fullBio); // { name: "Joko", age: 22, college: "Harvard University" }
+```
+
+## Spread operator sebagai parameter dan argumen.
+
+```javascript
+function sum(...num) {
+    let res = 0;
+    for (let i = 0; i < num.length; i++) {
+        res += num[i];
+    }
+    return res;
+}
+let num = [1, 2, 3, 4, 5, 6, 7];
+console.log(sum(...num)); //28
+```
+
+## Untuk mengubah string menjadi sekumpulan character
+
+Untuk melakukan ini, kita harus membungkusnya dengan array
+
+```javascript
+const nama = "Muhammad Ridwan";
+const charNama = [...nama];
+console.log(charNama); 
+// [     
+//     'M', 'u', 'h', 'a',
+//     'm', 'm', 'a', 'd',
+//     ' ', 'R', 'i', 'd',
+//     'w', 'a', 'n'
+// ]
+```
+
+Sekian tulisan kali ini. Semoga bisa bermanfaat untuk kalian yang lagi belajar programming. let’s code !!!
