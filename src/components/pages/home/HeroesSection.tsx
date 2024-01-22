@@ -12,7 +12,7 @@ export default function HeroesSection() {
             <div className="flex flex-col gap-y-12">
                 <Slide delay={0.2}>
                     <div className="flex items-center gap-x-4">
-                        <div className="relative">
+                        <div className="relative -z-10">
                             <Image
                                 src="/profile.png"
                                 alt="profile-photo"
