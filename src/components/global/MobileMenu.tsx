@@ -43,7 +43,7 @@ export default function MobileMenu() {
 
     const onToggleNav = () => {
         setNavShow((prev) => {
-            if (status) {
+            if (prev) {
                 document.body.style.overflow = "auto";
             } else {
                 document.body.style.overflow = "hidden";
