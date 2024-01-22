@@ -31,6 +31,11 @@ const data: {
         href: ROUTE.PROJECT,
         underConstruction: true,
     },
+    {
+        title: "Experience",
+        href: ROUTE.EXPERIENCE,
+        underConstruction: true,
+    },
 ];
 
 export default function Navbar() {

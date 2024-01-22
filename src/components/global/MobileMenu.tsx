@@ -9,6 +9,7 @@ import { Tooltip } from "react-tooltip";
 import { IoMdConstruct } from "react-icons/io";
 import { useMounted } from "@/hooks/useMounted";
 import { usePathname } from "next/navigation";
+import { PiShoppingBagOpenFill } from "react-icons/pi";
 
 const data: {
     title: string;
@@ -33,6 +34,12 @@ const data: {
         href: ROUTE.PROJECT,
         underConstruction: true,
         icon: <HiBeaker />,
+    },
+    {
+        title: "Experience",
+        href: ROUTE.EXPERIENCE,
+        underConstruction: true,
+        icon: <PiShoppingBagOpenFill />,
     },
 ];
 

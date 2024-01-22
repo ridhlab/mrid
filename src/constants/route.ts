@@ -3,4 +3,5 @@ export const ROUTE = {
     BLOG: "/blog",
     BLOG_DETAIL: "/blog/:slug",
     PROJECT: "/project",
+    EXPERIENCE: "/experience",
 };
