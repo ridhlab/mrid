@@ -1,7 +1,7 @@
 import React from "react";
 
 export const useMounted = () => {
-    const [isMounted, setIsMounted] = React.useState(false); // Need this for the react-tooltip
+    const [isMounted, setIsMounted] = React.useState(false);
 
     React.useEffect(() => {
         setIsMounted(true);

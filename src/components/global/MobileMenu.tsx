@@ -24,8 +24,8 @@ const data: {
         icon: <HiHome />,
     },
     {
-        title: "Blog",
-        href: ROUTE.BLOG,
+        title: "Post",
+        href: ROUTE.POST,
         underConstruction: false,
         icon: <HiBookmark />,
     },
@@ -63,7 +63,7 @@ export default function MobileMenu() {
         <button
             aria-label="Toggle Menu"
             onClick={onToggleNav}
-            className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2"
+            className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2 transition-all hover:text-emerald-600"
         >
             <RxHamburgerMenu className="text-xl" />
         </button>
@@ -120,6 +120,7 @@ export default function MobileMenu() {
                                 ) : (
                                     <Link
                                         href={href}
+                                        onClick={onToggleNav}
                                         className={`flex gap-x-2 items-center transition-all mb-6 ${
                                             pathname === href
                                                 ? "text-emerald-600"

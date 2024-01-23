@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 interface IProps {
     children: React.ReactNode;
     delay: number;
+    className?: string;
 }
 
-export default function Slide({ children, delay }: IProps) {
+export default function Slide({ children, delay, className }: IProps) {
     return (
         <motion.div
+            className={className ?? ""}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{

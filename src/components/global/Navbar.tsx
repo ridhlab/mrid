@@ -22,8 +22,8 @@ const data: {
         underConstruction: false,
     },
     {
-        title: "Blog",
-        href: ROUTE.BLOG,
+        title: "Post",
+        href: ROUTE.POST,
         underConstruction: false,
     },
     {
