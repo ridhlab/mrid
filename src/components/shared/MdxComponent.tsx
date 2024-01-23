@@ -192,7 +192,7 @@ const components = {
     code: ({ className, ...props }: React.HtmlHTMLAttributes<HTMLElement>) => (
         <code
             className={cn(
-                "relative rounded bg-accent/10 px-[0.3rem] py-[0.2rem] font-mono text-sm text-accent",
+                "rounded bg-accent/10 px-[0.3rem] py-[0.2rem] font-mono text-sm text-accent",
                 className
             )}
             {...props}

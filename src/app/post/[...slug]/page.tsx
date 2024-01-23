@@ -1,8 +1,4 @@
-import CardWriter from "@/components/pages/post/CardWriter";
-import PostContentSection from "@/components/pages/post/PostContentSection";
-import WriterSection from "@/components/pages/post/WriterSection";
-import { Mdx } from "@/components/shared/MdxComponent";
-import Slide from "@/components/shared/Slide";
+import { default as MainContentPost } from "@/components/pages/post/ContentPost";
 import { ROUTE } from "@/constants/route";
 import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
@@ -33,7 +29,6 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 export default async function PostDetail({ params }: PostProps) {
     const post = await getPostFromParams(params);
-    console.log({ post });
     return (
         <main className="my-12 flex flex-col gap-y-4">
             <div className="flex justify-start">
@@ -44,14 +39,12 @@ export default async function PostDetail({ params }: PostProps) {
                     <TbArrowBackUp /> <p>Go Back</p>
                 </Link>
             </div>
-            <div className="flex gap-x-8">
-                <PostContentSection
-                    code={post?.body?.code ?? ""}
-                    description={post?.description ?? ""}
-                    title={post?.title ?? ""}
-                />
-                <WriterSection date={post?.date ?? ""} />
-            </div>
+            <MainContentPost
+                code={post?.body?.code ?? ""}
+                date={post?.date ?? ""}
+                description={post?.description ?? ""}
+                title={post?.title ?? ""}
+            />
         </main>
     );
 }
