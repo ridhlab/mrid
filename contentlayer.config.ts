@@ -27,12 +27,23 @@ export const Post = defineDocumentType(() => ({
     computedFields: {
         slug: {
             type: "string",
-            resolve: (doc) => `/${doc._raw.flattenedPath}`,
+            resolve: (doc) => {
+                const slug = doc._raw.flattenedPath
+                    .split("/")[1]
+                    .split("-")
+                    .slice(1)
+                    .join("-");
+                return `/${doc._raw.flattenedPath.split("/")[0]}/${slug}`;
+            },
         },
         slugAsParams: {
             type: "string",
             resolve: (doc) =>
-                doc._raw.flattenedPath.split("/").slice(1).join("/"),
+                doc._raw.flattenedPath
+                    .split("/")[1]
+                    .split("-")
+                    .slice(1)
+                    .join("-"),
         },
     },
 }));
