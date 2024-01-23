@@ -23,7 +23,10 @@ export default function ButtonTheme() {
         );
 
     return (
-        <button onClick={toggleTheme}>
+        <button
+            onClick={toggleTheme}
+            className="transition-all rounded-full p-1 hover:text-emerald-600"
+        >
             {currentTheme === "light" ? <MoonIcon /> : <SunIcon />}
         </button>
     );

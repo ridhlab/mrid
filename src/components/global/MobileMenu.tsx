@@ -63,7 +63,7 @@ export default function MobileMenu() {
         <button
             aria-label="Toggle Menu"
             onClick={onToggleNav}
-            className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2"
+            className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2 transition-all hover:text-emerald-600"
         >
             <RxHamburgerMenu className="text-xl" />
         </button>
