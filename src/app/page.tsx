@@ -1,11 +1,5 @@
-import HeroesSection from "@/components/pages/home/HeroesSection";
-import TechStackSection from "@/components/pages/home/TechStackSection";
+import HomeTemplate from "@/components/template/home";
 
 export default function Home() {
-    return (
-        <main className="flex flex-col gap-y-24">
-            <HeroesSection />
-            <TechStackSection />
-        </main>
-    );
+    return <HomeTemplate />;
 }

@@ -1,32 +1,33 @@
-"use client";
-
-import CardPost from "@/components/pages/post/CardPost";
-import Slide from "@/components/shared/Slide";
-import { allPosts, Post } from "contentlayer/generated";
+import PostTemplate from "@/components/template/post/Post";
+import { Profile } from "@/contents/profile";
+import { Metadata } from "next";
 import React from "react";
 
-export default function BlogPage() {
-    return (
-        <main className="my-12">
-            <div className="max-w-[40rem] mx-auto flex flex-col gap-y-8">
-                <Slide delay={0.2}>
-                    <h2 className="md:text-4xl text-3xl font-bold">Posts</h2>
-                </Slide>
-                <Slide delay={0.4}>
-                    <ul className="flex flex-col gap-y-4">
-                        {allPosts.map((post, index) => (
-                            <li key={post._id}>
-                                <CardPost
-                                    date={post.date ?? ""}
-                                    description={post.description ?? ""}
-                                    title={post.title}
-                                    href={`/post/${post.slugAsParams}`}
-                                />
-                            </li>
-                        ))}
-                    </ul>
-                </Slide>
-            </div>
-        </main>
-    );
+const options = {
+    title: `${Profile.fullname} | Posts`,
+    url: "https://mrid.dev/post",
+    description: `Read the post that have benn writtern by ${Profile.fullname}`,
+};
+
+export const metadata: Metadata = {
+    title: options.title,
+    metadataBase: new URL(options.url),
+    description: options.description,
+    openGraph: {
+        title: options.title,
+        url: options.url,
+        siteName: "mrid.dev",
+        locale: "id-ID",
+        type: "website",
+        description: options.description,
+        // TODO: Define og image
+        // images: options.ogImage,
+    },
+    alternates: {
+        canonical: options.url,
+    },
+};
+
+export default function PostPage() {
+    return <PostTemplate />;
 }

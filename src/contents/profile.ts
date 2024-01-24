@@ -1,7 +1,7 @@
 import { TechStackEnum } from "./tech-stack";
 
 export const Profile = {
-    fullname: "M Ridwan",
+    fullname: "Muhammad Ridwan",
     shortname: "Ridwan",
     headline: "Software Engineer and Code Crafter",
     shortBio:
