@@ -48,7 +48,7 @@ export default function CardWriter({ date }: { date: string }) {
                     </div>
                 </div>
                 <div className=" h-[1px] bg-zinc-300 dark:bg-zinc-800"></div>
-                <div className="flex gap-x-4">
+                <div className="flex gap-x-2 items-center">
                     <FaRegCalendarAlt className="dark:text-zinc-400 text-zinc-600" />
                     <p className="text-sm dark:text-zinc-400 text-zinc-600">
                         {date}

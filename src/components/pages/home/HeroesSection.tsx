@@ -8,11 +8,11 @@ import Slide from "@/components/shared/Slide";
 
 export default function HeroesSection() {
     return (
-        <div className="mt-28 flex lg:flex-row justify-between flex-col">
+        <div className="md:mt-28 mt-16 flex lg:flex-row justify-between flex-col">
             <div className="flex flex-col gap-y-12">
                 <Slide delay={0.2}>
                     <div className="flex items-center gap-x-4">
-                        <div className="relative -z-10">
+                        <div className="relative -z-10 md:block hidden">
                             <Image
                                 src="/profile.png"
                                 alt="profile-photo"
@@ -22,7 +22,7 @@ export default function HeroesSection() {
                             />
                             <div className="w-4 h-4 rounded-full bg-emerald-600 absolute right-[6px] bottom-0 border-2 dark:border-zinc-500 border-zinc-300 "></div>
                         </div>
-                        <h1 className="text-4xl font-bold">
+                        <h1 className="md:text-4xl text-3xl font-bold">
                             {Profile.headline}
                         </h1>
                     </div>
@@ -40,7 +40,7 @@ export default function HeroesSection() {
                                     href={val.url}
                                     rel="noreferer noopener"
                                     target="_blank"
-                                    className="flex items-center rounded p-2 bg-zinc-200 dark:bg-zinc-800 group"
+                                    className="flex items-center rounded p-2 bg-zinc-200 dark:bg-zinc-800 group md:text-base text-sm"
                                 >
                                     <val.icon
                                         className="flex-shrink-0 h-5 w-5 text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-800 duration-300"
@@ -54,8 +54,10 @@ export default function HeroesSection() {
                     </ul>
                 </Slide>
             </div>
-            <div className="w-96 lg:w-auto">
-                <HeroesImage />
+            <div className="w-96 lg:w-auto xl:ml-0 lg:-ml-48">
+                <Slide delay={0}>
+                    <HeroesImage />
+                </Slide>
             </div>
         </div>
     );
