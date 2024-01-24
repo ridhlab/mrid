@@ -82,7 +82,7 @@ export default function Navbar() {
         <header
             className={`transition-all ease-in-out py-6 border-b border-zinc-300 px-6 dark:border-zinc-700 md:px-20 sticky ${
                 scrollY > 100
-                    ? "bg-noise top-0 z-10 dark:bg-[#18181be4] bg-[#ffffffe6]"
+                    ? "top-0 z-10 dark:bg-[#18181be4] bg-[#ffffffe6]"
                     : scrollY !== 0
                     ? "-top-44"
                     : "top-0"
