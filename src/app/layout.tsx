@@ -13,6 +13,7 @@ const options = {
     title: `${Profile.fullname} | ${Profile.headline}`,
     url: "https://mrid.dev",
     description: `${Profile.fullname} is a Software Engineer who is passionate in Software Engineering and Programming`,
+    ogImage: "/og-image.jpeg",
 };
 
 export const metadata: Metadata = {
@@ -26,8 +27,7 @@ export const metadata: Metadata = {
         locale: "id-ID",
         type: "website",
         description: options.description,
-        // TODO: Define og image
-        // images: options.ogImage,
+        images: options.ogImage,
     },
     alternates: {
         canonical: options.url,
