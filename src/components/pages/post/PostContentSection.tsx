@@ -19,7 +19,9 @@ export default function PostContentSection({
         <Slide delay={0.2} className="w-full">
             <div className="flex flex-col gap-y-20">
                 <div className="flex flex-col gap-y-2 border-b border-zinc-300 dark:border-zinc-700 pb-4">
-                    <h1 className="font-bold text-4xl">{title}</h1>
+                    <h1 className="font-bold md:text-4xl text-[32px]">
+                        {title}
+                    </h1>
                     <p className="italic">{description}</p>
                 </div>
                 <Mdx code={code} />
