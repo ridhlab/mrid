@@ -1,0 +1,200 @@
+---
+title: Memahami Konsep JSX dan Aturan-Aturan Penulisannya di ReactJS
+description: Konsep JSX dan aturan penulisannya.
+date: November 08, 2021
+type: Post
+---
+
+JSX adalah sebuah fitur dalam ReactJS dimana kita bisa menulis kode HTML di file JavaScript. JSX menggunakan babel sebagai compiler agar nantinya kode HTML kita bisa dipahami oleh JavaScript.
+
+Berikut adalah contoh kode dari JSX.
+
+```javascript
+function HelloJSX(){
+    return <div>Hello JSX</div>
+}
+```
+
+## Aturan-aturan dalam penulisan kode JSX
+
+JSX memiliki beberapa aturan yang harus diperhatikan dalam penulisan kodenya. Aturan-aturannya terdiri dari :
+
+### Komponen JSX harus diawali dengan huruf kapital
+
+Pada komponen Hello JSX diatas, kita menulis nama komponennya dengan huruf kapital.
+
+### Kode JSX harus memiliki satu tag pembungkus
+
+Untuk contohnya bisa dilihat di kode berikut.
+
+```javascript
+function Element(){ 
+    return(
+        <div>
+            <h1>Hello JSX</h1>
+            <h2>Kode JSX harus memiliki satu tag penutup</h2>
+        </div> 
+    );
+}
+```
+Kita bisa menambahkan tanda kurung untuk membungkus JSX jika kode JSX nya terdapat lebih dari satu baris.
+
+Kode JSX akan error jika tidak dibungkus dalam satu tag pembungkus
+
+```javascript
+function Element(){
+    return (
+        <div>
+            <h1>Hello JSX</h1>
+        </div>
+    
+        <div>
+            <h2>Kode JSX tidak akan berjalan</h2>
+        </div>
+    );
+}
+```
+
+Sebagai solusi, kita bisa menambahkan React Fragment
+
+```javascript
+import React from "react";
+function Element() {
+    return (
+        <React.Fragment>
+            <div>
+                <h1>Hello JSX</h1>
+            </div>
+            <div>
+                <h2>Kode JSX akan berjalan</h2>
+            </div>
+        </React.Fragment>
+    );
+}
+```
+
+Atau bisa juga ditulis dengan shortcut.
+
+```javascript
+import React from "react";
+function Element() {
+    return (
+        <>
+            <div>
+                <h1>Hello JSX</h1>
+            </div>
+            <div>
+                <h2>Kode JSX akan berjalan</h2>
+            </div>
+        </>
+    );
+}
+```
+### Penulisan ekspresi JavaScipt di dalam bungkus JSX
+
+Untuk memasukkan ekspresi JavaScript ke dalam bungkus JSX, bisa menggunakan kurung kurawal.
+
+```javascript
+function Element(){
+    const nama = "Ridwan";
+    return (
+        <div>
+            Hello {nama} // Hello Ridwan
+        </div>
+    );
+}
+```
+
+Bisa juga ditambahkan dalam atribut HTML.
+
+```javascript
+function Element() {
+    const nama = "Ridwan";
+    const width = "12rem";
+    const height = "10rem";
+    return (
+        <div width={width} height={height}>
+            Hello {nama}
+        </div>
+    );
+}
+```
+
+Intinya jika kita ingin memasukkan kode javascript seperti variabel, function, object, ternary operator, dan lain-lain, Kita harus menuliskannya di dalam kurung kurawal. Karena jika tidak ditulis dalam kurung kurawal, maka JSX akan menganggap itu sebagai plain text biasa.
+
+### Penggunaan keyword class dan for pada JSX
+
+Ketika kita ingin menuliskan atribut class atau for dalam tag JSX, kita harus menggantinya dengan keyword className dan htmlFor. Hal ini untuk mencegah bentrok karena for dan class adalah keyword di JavaScript.
+
+```javascript
+function Element() {
+    return (
+        <form className="form-control">
+            <label htmlFor="name">Enter your name: </label>
+            <input type="text" id="name" />
+        </form>
+    )
+};
+```
+### Penggunakan self closing tag
+
+Element HTML biasanya terdapat dua tag, yaitu tag pembuka dan tag penutup. Tapi ada beberapa element HTML yang hanya menggunakan satu tag saja, seperti tag img dan input. Di JSX, element tersebut harus ditambahin tanda slash di penghujung tag.
+
+```javascript
+function Element() {
+    return (
+        <div>
+            <img src="img/info.png" />
+            <div>
+                <label htmlFor="name">Enter your name: </label>
+                <input type="text" id="name" />
+            </div>
+        </div>
+    );
+}
+```
+
+### Penggunaan Function Component di JSX
+
+ReactJS adalah library JavaScript yang berkonsep reusable components. Artinya komponen di ReactJS bisa digunakan kembali hanya menuliskan satu kode saja. Contohnya bisa dilihat di bawah ini.
+
+```javascript
+
+function Navbar() {
+    return (
+        <ul>
+            <li>Home</li>
+            <li>FAQ</li>
+            <li>About</li>
+        </ul>
+    )
+}
+function Home() {
+    return (
+        <>
+            <Navbar />
+            <div>This is Home page</div>
+        </>
+    )
+}
+function FAQ() {
+    return (
+        <>
+            <Navbar />
+            <div>This is FAQ page</div>
+        </>
+    )
+}
+function About() {
+    return (
+        <>
+            <Navbar />
+            <div>This is About page</div>
+        </>
+    )
+}
+```
+
+Pada kode diatas terdapat tiga komponen yaitu Home, FAQ, dan About. Dan di masing-masing komponen terdapat komponen Navbar. Daripada kita menuliskan komponen Navbarnya satu persatu. Lebih baik kita buat sebuah function component Navbar dan mereturnnya dengan isi navbarnya. Lalu di masing-masing komponen, kita panggil function component Navbar dengan menggunakan gaya penulisan self closing tag.
+
+Sekian pembahasan mengenai konsep JSX dan aturan-aturannya dalam ReactJS. Semoga bisa bermanfaat dan memjadi pemicu bagi kita semua untuk lebih semangat belajar programming. keep learn and let’s code!!!

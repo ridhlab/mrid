@@ -1,9 +1,9 @@
 "use client";
 import CardPost from "@/components/pages/post/CardPost";
 import Slide from "@/components/shared/Slide";
-import { allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 
-export default function PostTemplate() {
+export default function PostTemplate({ posts }: { posts: Post[] }) {
     return (
         <main className="my-12">
             <div className="max-w-[40rem] mx-auto flex flex-col gap-y-8">
@@ -12,7 +12,7 @@ export default function PostTemplate() {
                 </Slide>
                 <Slide delay={0.4}>
                     <ul className="flex flex-col gap-y-4">
-                        {allPosts.map((post, index) => (
+                        {posts.map((post, index) => (
                             <li key={post._id}>
                                 <CardPost
                                     date={post.date ?? ""}

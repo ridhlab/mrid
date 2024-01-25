@@ -1,0 +1,124 @@
+---
+title: Konsep dan Alur Rerender Pada ReactJS
+description: Konsep dan alur rerender pada reactjs.
+date: January 10, 2023
+type: Post
+---
+
+ReactJS adalah sebuah JavaScript library yang digunakan untuk membuat Single Page Application (SPA). SPA memungkinkan website yang kita buat menjadi lebih interaktif dan menarik. Terimakasih kepada virtual DOM yang berperan besar pada proses ini. Sehingga membuat React JS dapat memperbarui DOM tanpa merender ulang (rerender) keseluruhan DOM.
+
+## Apa itu Virtual DOM?
+Sebelum mempelajari konsep rerender pada ReactJS, alangkah baiknya kita memahami terlebih dahulu apa itu Virtual DOM. Virtual DOM adalah representasi dari DOM (Document Object Model) yang disimpan dalam memori. Ketika kita membangun website dengan ReactJS, sebenarnya kita sedang membuat beberapa abstraksi dari Virtual DOM. Yang kemudian oleh browser akan di-compile untuk menjadi Real DOM yang kemudian disusun dalam DOM tree.
+
+Virtual DOM bekerja dengan melakukan proses yang disebut “diffing”. Proses ini akan membandingkan Virtual DOM lama dengan Virtual DOM baru. Dengan algoritma tersebut ReactJS mampu memperbarui DOM sesuai dengan Virtual DOM yang baru dan hanya memperbarui bagian yang berubah dari Virtual DOM tersebut. Ilustrasinya bisa dilihat dibawah ini.
+
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*rhlwsQcwFj6b56_-XL5S0g.jpeg"/>
+
+## Bagaimana Proses Rerender pada React JS ?
+Seperti penjelasan sebelumnya, ReactJS hanya akan memperbarui Virtual DOM yang berubah. Oleh karena itu, ReactJS juga hanya akan memperbarui Virtual DOM yang state pada componentnya berubah. Proses pembaruan sebuah komponen akan memicu komponen yang ada di bawahnya (child component) untuk dirender ulang. Agar lebih jelas, mari kita perhatikan kode berikut.
+
+```javascript
+const Counter = ({ count }) => {
+    return <p>{count}</p>;
+};
+
+const Footer = () => {
+    return <footer>Copyright 2023</footer>;
+};
+
+function App() {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div className='App' style={{ padding: "1rem", margin: "1rem" }}>
+            <button onClick={() => setCount((prev) => prev + 1)}>Tambah</button>
+            <Counter count={count} />
+            <Footer />
+        </div>
+    );
+}
+```
+Kode tersebut merupakan sebuah program counter sederhana. Kita mempunyai tiga komponen yaitu App, Counter , dan Footer. Pada komponen App, terdapat sebuah state yaitu count . Nilai count bisa berubah ketika tombol tambah diklik. Berikut ini adalah tampilan program saat dijalankan.
+
+<img src='https://miro.medium.com/v2/resize:fit:576/format:webp/1*7qkRqqWbTy-RoBNq5K-Ysw.gif'/>
+
+Keterangan : kotak hijau mengindikasikan component rerender
+
+Ketika tombol tambah diklik, nilaicount berubah karena proses penambahan. Hal ini akan menyebabkan komponen App dirender ulang. Karena pada komponen App terdapat komponen lain yaitu Counterdan Footer , maka komponen tersebut juga akan dirender ulang.
+
+Komponen Counter dirender ulang karena komponen ini memperloleh props dari komponen App . Oleh karena itu, komponen akan dirender ulang untuk menampilkan data terbaru ketika terjadi perubahan. Sedangkan pada komponen Footer , render ulang disebabkan karena komponen tersebut merupakan child component dari App . Render ulang pada komponen Footer tidak akan menampilkan perubahan apapun, sehingga proses render ulangnya tidak begitu berguna (unnecessary rerender).
+
+Unnecsessary rerender pada komponen Footer dapat diatasi dengan dua cara yaitu dengan merubah struktur komponen atau menggunakan React Memo.
+
+## Merubah Struktur Komponen
+
+Merubah struktur komponen dalam hal ini bertujuan untuk memindahkan state yang awalnya berada pada komponen App menjadi berada pada komponen Counter itu sendiri. Dengan cara seperti ini, maka komponen Counter tidak perlu lagi menggunakan props dari komponen App sehingga saat terjadi perubahan, hanya komponen Counter yang akan dirender ulang. Perhatikan contoh kode berikut.
+
+```javascript
+const Counter = ({ count }) => {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+            <button onClick={() => setCount((prev) => prev + 1)}>Tambah</button>
+            <p>{count}</p>
+        </div>
+    );
+};  
+
+const Footer = () => {
+    return <footer>Copyright 2023</footer>;
+};
+
+function App() {
+    return (
+        <div className='App' style={{ padding: "1rem", margin:"1rem" }}>
+            <Counter />
+            <Footer />
+        </div>
+    );
+}
+```
+
+Ketika dijalankan, maka hasilnya akan tampak seperti berikut ini:
+
+<img src='https://miro.medium.com/v2/resize:fit:640/format:webp/1*rZHmqH59Ajg4wGf41JhRFA.gif'/>
+
+## Menggunakan React.memo
+Cara lain untuk mengatasi masalah unnecessary rerender adalah dengan menggunakan React Memo. React Memo adalah komponen tingkat tinggi yang membungkus komponen untuk menyimpan output yang dirender dan menghindari proses render yang tidak perlu. Untuk menggunakan React Memo, Kita hanya perlu membungkus komponen yang terindikasi unnecessary rerender dengan API React.memo. Ketika suatu komponen dibungkus dengan React.memo, maka ia hanya akan dirender ulang jika state atau props komponen tersebut berubah. Berikut adalah implementasi dari React.memo.
+
+```javascript
+
+const Counter = ({ count }) => {
+    return <p>{count}</p>;
+};
+
+const Footer = React.memo(() => {
+    return <footer>Copyright 2023</footer>;
+});
+
+function App() {
+    const [count, setCount] = useState(0);
+ 
+    return (
+        <div className='App' style={{ padding: "1rem", margin: "1rem" }}>
+            <button onClick={() => setCount((prev) => prev + 1)}>Tambah</button>
+            <Counter count={count} />
+            <Footer />
+        </div>
+    );
+}
+```
+
+Berikut hasilnya setelah program dijalankan.
+
+
+<img src='https://miro.medium.com/v2/resize:fit:640/format:webp/1*kCCCJuSWywVCDqYHXW-S0g.gif'/>
+
+Komponen Footer tidak dirender ulang meskipun proses render ulang terjadi pada komponen induknya. Hal ini terjadi karena telah kita membungkus komponen Footer dengan React.memo. Sehingga, meskipun komponen App dirender ulang, ia tidak akan memicu komponen Footer untuk dirender ulang selama props atau state-nya tidak berubah.
+
+## Kesimpulan
+
+Konsep dasar yang harus kita pahami adalah tiap komponen pada ReactJS akan dirender ulang (rerender) jika state-nya berubah. Perubahan state ini juga akan memicu komponen di bawahnya dalam susunan component tree untuk ikut dirender ulang (rerender).
+
+Dengan memahami konsep rerender pada React.JS, kita bisa lebih tepat dalam memilih struktur komponen yang akan kita gunakan. Sehingga, kita dapat mengoptimalkan kinerja web yang kita buat.
