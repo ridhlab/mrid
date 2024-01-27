@@ -8,7 +8,7 @@ import React from "react";
 const options = {
     title: `${Profile.fullname} | Posts`,
     url: "https://mrid.dev/post",
-    description: `Read the post that have benn writtern by ${Profile.fullname}`,
+    description: `Read the post that have been written by ${Profile.fullname}`,
 };
 
 export const metadata: Metadata = {
