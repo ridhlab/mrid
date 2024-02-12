@@ -102,10 +102,14 @@ export default function MobileMenu() {
                                                 className="relative flex gap-x-2 items-center text-gray-400"
                                                 data-tooltip-id="tooltip-under-contruction"
                                             >
-                                                {icon}
+                                                <div className="text-slate-300 dark:text-slate-600">
+                                                    {icon}
+                                                </div>
                                                 <div className="relative">
-                                                    <p>{title}</p>
-                                                    <div className="absolute -bottom-2 right-0 text-gray-400">
+                                                    <span className="text-gray-400 dark:text-gray-600">
+                                                        {title}
+                                                    </span>
+                                                    <div className="absolute -bottom-2 right-0 text-gray-400 dark:text-gray-600">
                                                         <IoMdConstruct />
                                                     </div>
                                                 </div>

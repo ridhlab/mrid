@@ -54,7 +54,7 @@ export default function HeroesSection() {
                     </ul>
                 </Slide>
             </div>
-            <div className="w-96 lg:w-auto xl:ml-0 lg:-ml-48">
+            <div className="w-96 lg:w-auto xl:ml-0 lg:-ml-48 relative -z-50">
                 <Slide delay={0}>
                     <HeroesImage />
                 </Slide>

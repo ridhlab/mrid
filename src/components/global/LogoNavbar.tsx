@@ -13,7 +13,7 @@ export default function LogoNavbar() {
             : uppercaseFirstLetter(pathname.split("/")[1]);
 
     return (
-        <h2>
+        <h2 className="w-36">
             <Link href={ROUTE.HOME}>~</Link> /{" "}
             {titlePath ? (
                 <Link className="text-emerald-600" href={pathname}>
