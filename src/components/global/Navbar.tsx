@@ -61,7 +61,7 @@ export default function Navbar() {
         <li
             key={index}
             className={`border-b-2 py-6 px-4 ${
-                pathname === href ? "border-emerald-500" : "border-transparent"
+                pathname === href ? "border-emerald-600" : "border-transparent"
             }`}
         >
             {underConstruction ? (
@@ -71,10 +71,14 @@ export default function Navbar() {
                         data-tooltip-id="tooltip-under-contruction"
                     >
                         <div className="flex items-center gap-x-2">
-                            <div className="text-slate-300">{icon}</div>
-                            <span className="text-gray-400">{title}</span>
+                            <div className="text-slate-300 dark:text-slate-600">
+                                {icon}
+                            </div>
+                            <span className="text-gray-400 dark:text-gray-600">
+                                {title}
+                            </span>
                         </div>
-                        <div className="absolute -bottom-2 right-0 text-gray-400">
+                        <div className="absolute -bottom-2 right-0 text-gray-400 dark:text-gray-600">
                             <IoMdConstruct />
                         </div>
                     </a>
@@ -90,7 +94,7 @@ export default function Navbar() {
                         <div
                             className={
                                 pathname === href
-                                    ? "text-emerald-500"
+                                    ? "text-emerald-600"
                                     : "text-slate-400"
                             }
                         >
