@@ -44,9 +44,4 @@ export const socialLinks = [
         url: Profile.socialLinks.quora,
         icon: SiQuora,
     },
-    {
-        title: "X",
-        url: Profile.socialLinks.x,
-        icon: FaXTwitter,
-    },
 ];

@@ -14,7 +14,6 @@ export const Profile = {
         medium: "https://medium.com/@ridhwanid",
         linkedin: "https://www.linkedin.com/in/dharidwanid",
         quora: "https://id.quora.com/profile/Muhammad-Ridwan-123",
-        x: "https://x.com/m_riduwan__",
     },
 
     techStack: [
