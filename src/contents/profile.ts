@@ -10,7 +10,6 @@ export const Profile = {
         gmail: "mailto:mohridwan1707@gmail.com",
         github: "https://github.com/ridhlab",
         codewars: "https://www.codewars.com/users/ridhlab",
-        instagram: "https://instagram.com/mriiid_",
         medium: "https://medium.com/@ridhwanid",
         linkedin: "https://www.linkedin.com/in/dharidwanid",
         quora: "https://id.quora.com/profile/Muhammad-Ridwan-123",
