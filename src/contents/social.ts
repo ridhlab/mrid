@@ -25,11 +25,6 @@ export const socialLinks = [
         icon: SiCodewars,
     },
     {
-        title: "Instagram",
-        url: Profile.socialLinks.instagram,
-        icon: FaInstagramSquare,
-    },
-    {
         title: "Medium",
         url: Profile.socialLinks.medium,
         icon: FaMedium,
