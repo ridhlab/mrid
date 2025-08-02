@@ -5,7 +5,7 @@ export const Profile = {
     shortname: "Ridwan",
     headline: "Software Engineer and Code Crafter",
     shortBio:
-        "I'm Ridwan, Over 2+ years experience. Have passionate in Software Development and programming. Currently focused on Fulltack Development. Love to explore new things related on Technology, Software Engineering, Artificial Intelligence and many more then connect them to discover useful insights.",
+        "Hi, I'm Ridwan, a curious builder with 3+ years of experience in Software Development. Specialize in Frontend but also work across the Backend when needed, with passion for connecting dots between technology, AI, and the real world patterns. I love exploring new ideas, tools, and paradigms, then turning them into meaningful insights (and working code).",
     socialLinks: {
         gmail: "mailto:mohridwan1707@gmail.com",
         github: "https://github.com/ridhlab",
