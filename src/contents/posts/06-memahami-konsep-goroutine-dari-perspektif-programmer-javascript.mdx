@@ -1,0 +1,96 @@
+---
+title: Memahami Konsep Goroutine dari Perspektif Programmer JavaScript
+description: Penjelasan dan cara kerja go routine dari perspektif programmer javascript
+date: October 06, 2025
+type: Post
+---
+
+Goroutine adalah salah satu fitur untuk melakukan concurrency di Golang. Concurrency adalah suatu konsep dimana kita melakukan suatu task/proses secara bersamaan. Gorutine Ini penting banget untuk dipahami saat kita masuk ke dunia concurrency di Golang dimana segala sesuatu terasa magic (ehm, terlalu lebay sih wkwkw).
+
+## Synchronous VS Asynchronous
+
+Sebelum masuk kenapa kita butuh Goroutine, ada salah satu konsep yang harus dipahami dahulu. Yaitu tentang Synchronous dan Asynchronous Programming. Synchronous berarti kita melakukan suatu proses secara berurutan dan blocking. Blocking maksudnya dia bakal ngeblock proses itu sampai selesai, baru setelah selesai, ia akan lanjut ke proses selanjutnya. Asynchronous berarti kita melakukan suatu proses secara concurrent atau dijalankan secara bersamaan dengan proses lain. Karena itu dia mempunyai sifat non-blocking, dengan kata lain dia tidak ngeblocking proses A, tapi proses A dilakukan berbarengan dengan proses B. Semua bahasa pemrograman secara default dijalankan secara synchronous. Namun ada beberapa bahasa pemrograman yang menambahkan fitur supaya ia bisa melakukan proses secara asynchronous. Salah satu nya yang akan kita bahas yaitu Golang dengan Goroutine nya.
+
+## Kenapa Butuh Goroutine
+
+Jadi Goroutine di Golang hadir digunakan apabila kita ingin menghandle task yang dijalankan secara asynchronous. Artinya proses A dan B dilakukan secara concurrent. Kenapa ini penting? In real world, akan ada masanya kita perlu handle task secara concurrent untuk efisiensi dan penghematan waktu. Sehingga akan meningkatkan performa dan waktu eksekusi suatu proses. Dan juga akan membuat user senang hahaha.
+
+## Contoh Case di JavaScript
+
+Bagi yang mempunyai background JavaScript, pasti tidak asing dengan pattern seperti ini.
+
+```javascript
+...
+const userDetail = await fetchUserDetail(userId)
+const userSetting = await fetchUserSetting(userId)
+const userDocuments = await fetchUserDocuments(userId)
+...
+```
+Pattern ini akan menjalankan task secara synchronous, dan tiap proses untuk bisa jalan harus saling nunggu proses yang lain selesai. Alangkah bijaknya, jika tiap proses itu tidak saling dependent, maka ketiga proses itu bisa dilakukan secara bersamaan.
+
+```javascript
+...
+const [userDetail, userSetting, userDocuments] = await Promise.all([
+  fetchUserDetail(userId),
+  fetchUserSetting(userId),
+  fetchUserDocuments(userId)
+])
+...
+
+// do something with userDetail, userSettings, and userDocuments
+```
+
+Pattern diatas adalah salah satu imeplementasi asynchronous di JavaScript. Artinya proses `fetchUserDetail` , `fetchUserSettings`, dan `fetchUserDocuments` dilakukan secara bersamaan tanpa harus saling nunggu. Lalu setelah ketiga proses itu selesai, maka ia akan handle task selanjutnya di next line. Sehingga akan mempercapat eksekusi suatu program. Dan user pun senang.
+
+## Contoh Case di Golang
+
+By default Golang itu synchronous, maka ketika ada code
+```go
+...
+userDetail := fetchUserDetail(userId)
+userSetting := fetchUserSetting(userId)
+userDocuments := fetchUserDocuments(userId)
+...
+```
+
+Dia akan bertindak secara synchronous, meskipun tanpa keyword await seperti JavaScript. Lalu bagaimana cara biar ketika proses itu bisa dilakukan secara concurrent? disinilah Gorountine dengan keyword `go` nya akan dipake.
+
+```go
+import "sync"
+
+
+...
+var wg sync.WaitGroup
+wg.Add(3)
+
+var userDetail *userDetail
+var userSetting *userSettings
+var userDocuments []*userDocuments
+
+var userDetailErr, userSettingErr, userDocumentsErr error
+
+go func() {
+  userDetail, userDetailErr = fetchUserDetail(userId)
+  defer wg.Done()
+}()
+
+go func() {
+  userSetting, userSettingErr = fetchUserSetting(userId)
+  defer wg.Done()
+}()
+
+go func() {
+  userDocuments, userDocumentsErr = fetchUserDocuments(userId)
+  defer wg.Done()
+}()
+
+wg.Wait()
+
+// do something with userDetail, userSettings, and userDocuments
+
+...
+```
+
+Di code diatas, proses `fetchUserDetail`, `fetchUserSetting`, `fetchUserDocuments` dilakukan secara concurrent tanpa harus nunggu proses lain selesai. Disini kita menggunakan bantuan dari package `sync` untuk menambahkan berapa proses yang akan dilakukan secara concurrent dan menunggu proses itu hingga semua proses itu selesai.
+
+Goroutine adalah fitur yang bisa digunakan untuk concurrency di Golang. Ringan, cepat dan mudah digunakan. Dengan keyword `go`, kita bisa membuat proses berjalan secara concurrent dan lebih efisien.
