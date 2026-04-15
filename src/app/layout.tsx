@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 import "react-tooltip/dist/react-tooltip.css";
 import Footer from "@/components/global/Footer";
 import { Profile } from "@/contents/profile";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,6 +50,7 @@ export default function RootLayout({
                     </div>
                     <Footer />
                 </Providers>
+                <Analytics />
             </body>
         </html>
     );
