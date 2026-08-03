@@ -7,6 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import Footer from "@/components/global/Footer";
 import { Profile } from "@/contents/profile";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <Script src="https://t.contentsquare.net/uxa/6067154b85858.js" defer />
             <body className={inter.className + " dark:bg-zinc-900"}>
                 <Providers>
                     <Navbar />
